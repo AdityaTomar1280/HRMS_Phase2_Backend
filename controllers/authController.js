@@ -2,16 +2,6 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 const sendEmail = require("./../services/sendEmail");
-const { request } = require("express");
-
-
-const multer = require("multer");
-const fs = require("fs");
-const path = require("path");
-const { GoogleGenerativeAI } = require("@google/generative-ai");
-const pdf = require("pdf-parse");
-const mammoth = require("mammoth");
-
 
 exports.register = async (req, res, next) => {
   try {
@@ -49,7 +39,7 @@ exports.register = async (req, res, next) => {
     //     <p>Hello ${name},</p>
     //     <p>Thank you for registering with CoreHire.ai. Please verify your email address by clicking the button below:</p>
     //     <div style="text-align: center; margin: 30px 0;">
-    //       <a href="${verificationLink}" 
+    //       <a href="${verificationLink}"
     //          style="background-color: #5e35b1; color: white; padding: 12px 30px; text-decoration: none; border-radius: 5px; font-weight: bold;">
     //         Verify Email
     //       </a>
@@ -67,13 +57,11 @@ exports.register = async (req, res, next) => {
     //   message:
     //     "Registration successful! Please check your email to verify your account.",
     // });
-   
-    
+
     return res.status(201).json({
       message:
         "Registration successful! Please check your email to verify your account.",
     });
-
   } catch (error) {
     console.error("Registration error:", error);
     return res.status(500).json({
@@ -179,9 +167,10 @@ exports.requestPasswordReset = async (req, res, next) => {
 
     const secret = process.env.JWT_SECRET + user.password;
     const token = jwt.sign({ id: user._id, email: user.email }, secret, {
-      expiresIn: "1h",
+      expiresIn: 1000000,
     });
-    const resetURL = `http://192.168.10.178/resetpassword?id=${user._id}&token=${token}`;
+    // const resetURL = `https://corehire-app.cfapps.ap11.hana.ondemand.com/resetpassword?id=${user._id}&token=${token}`;
+    const resetURL = `http://localhost:3000/resetpassword?id=${user._id}&token=${token}`;
 
     await sendEmail(
       user.email,

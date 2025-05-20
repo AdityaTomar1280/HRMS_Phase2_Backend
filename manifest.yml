@@ -1,0 +1,18 @@
+---
+applications:
+  - name: corehire-nodejs
+    path: .
+    memory: 256M
+    instances: 1
+    buildpacks:
+      - nodejs_buildpack
+    command: npm start
+    env:
+      NODE_ENV: production
+      MONGODB_URI: mongodb+srv://adityatomar:qX5MX41NjeSEZFod@cluster0.iyuaf.mongodb.net/hrms?retryWrites=true&w=majority&appName=Cluster0 # Replace with your MongoDB connection string
+      JWT_SECRET: 76c208f0dff2544c12ec2f4f3996daa552007796e3dcaa0dd9a5d4f72ec9a2d2fa8cd8ae44eaf686d6cb532b5ad9462b5e51978c8bc20a6e037a2b1e145d6f270ad0df7c4cd7c18b5e666fb2cb2ef3499b113a87390255ddc0d6f1af85c6f5cded95d2274a4976e1dd0d660af96a9f89200b73b94cc77089ebbb2b7b08ae7357140af1db803c4b172d04b5743e9777348fac9a4984304f7fe4537b2c1fcd909bdec10bffcb6f75ee42627d771a9161b39940081bde6bab2115f5aaa5a10e9cfb85ab907e2fa9cc3c1e12c76873b46cf8684745e0f11b942ba438d2f6b2449d5bcd2f559de74d13e10b7bd18c5ff9ef2a2679c257e24074521f4a890bac6c3b81
+      GMAIL_USER: adityatomar1280@gmail.com
+      CLIENT_ID: 385695999421-eqor61qteijuso1bup0brtfic6v0lu9f.apps.googleusercontent.com
+      CLIENT_SECRET: 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
+      REFRESH_TOKEN: 1//04Z9KyAtucZJpCgYIARAAGAQSNwF-L9Ir3IgbuX2UBHL0D1ka1lb02hfcaPWnK3G0hsNuCpMceYXHBVD8WQdATHnoL4Qt_4tWI7U
+      GEMINI_API_KEY: AIzaSyDPxMy2peHTWFnOHYkvlCCyS36-YSyz358
